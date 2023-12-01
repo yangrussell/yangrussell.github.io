@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+FN;CHARSET=UTF-8:Russell Yang
+N;CHARSET=UTF-8:Yang;Russell;;;
+EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:russell.a.yang@gmail.com
+EMAIL;CHARSET=UTF-8;type=WORK,INTERNET:russell.yang@yale.edu
+TEL;TYPE=CELL:6508899922
+X-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/in/russell-yang
+X-SOCIALPROFILE;TYPE=resume:https://russellyang.com/resume
+REV:2023-06-19T20:39:44.068Z
+END:VCARD
