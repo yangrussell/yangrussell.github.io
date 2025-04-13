@@ -51,29 +51,41 @@
     nav ul li a {
       text-decoration: none;
       color: #333;
-      font-size: 18px; /* Increased navigation link font size */
+      font-size: 18px; /* Navigation link font size */
+      position: relative;
+      padding-right: 1.8em; /* Reserve space for the icon */
     }
     nav ul li a:hover {
       color: #555;
+    }
+    /* Specific styling for Contact Card link icon using relative units */
+    nav ul li a.contact-link .contact-icon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1em;
+      height: 1em;
+      fill: currentColor;
     }
     .bio {
       margin-bottom: 30px;
     }
     .bio h1 {
-      font-size: 36px; /* Increased bio header font size */
+      font-size: 36px; /* Bio header font size */
       margin-bottom: 10px;
     }
     .bio .profile img {
-      width: 120px; /* Set a smaller width for the image */
+      width: 120px; /* Smaller width for the image */
       height: auto;
-      border-radius: 50%; /* Keeps the image circular */
-      margin-bottom: 20px; /* Adds spacing below the image */
+      border-radius: 50%; /* Circular image */
+      margin-bottom: 20px; /* Spacing below the image */
     }
     .media-mentions {
       margin-top: 40px;
     }
     .media-mentions h2 {
-      font-size: 28px; /* Increased media mentions header font size */
+      font-size: 28px; /* Media mentions header font size */
       margin-bottom: 10px;
       border-bottom: 1px solid #ddd;
       padding-bottom: 5px;
@@ -98,15 +110,15 @@
         font-size: 16px;
       }
       nav ul {
-        justify-content: center; /* Center the menu items */
+        justify-content: center; /* Center menu items */
         flex-wrap: wrap;       /* Allow wrapping on small screens */
       }
       nav ul li {
-        margin: 5px; /* Adjust margin to better space items when wrapping */
+        margin: 5px; /* Adjust margin for spacing when wrapping */
       }
       nav ul li a {
         font-size: 16px;
-        text-align: center; /* Center text if it wraps to multiple lines */
+        text-align: center; /* Center text if it wraps onto multiple lines */
       }
     }
   </style>
@@ -116,7 +128,7 @@
     <header>
       <!-- Profile photo section -->
       <div class="profile">
-        
+        <!-- Add profile image if needed -->
       </div>
       <!-- Navigation Menu -->
       <nav>
@@ -124,7 +136,15 @@
           <li><a href="resume.html">Resume</a></li>
           <li><a href="https://www.linkedin.com/in/russell-yang" target="_blank">LinkedIn</a></li>
           <li><a href="https://scholar.google.com/citations?user=-Qb7KsMAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
-          <li><a href="russellyang.vcf">Contact Card</a></li>
+          <li>
+            <a class="contact-link" href="russellyang.vcf">
+              Contact Card
+              <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <!-- Font Awesome Address Card Icon (fa-address-card) -->
+                <path d="M528 64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM224 224c0-26.5 21.5-48 48-48s48 21.5 48 48-21.5 48-48 48-48-21.5-48-48zm144 144H208c-8.8 0-16-7.2-16-16v-8c0-26.5 21.5-48 48-48h80c26.5 0 48 21.5 48 48v8c0 8.8-7.2 16-16 16z"/>
+              </svg>
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -135,7 +155,11 @@
         <img src="headshotCropped.jpg" alt="Profile Photo of Russell Yang">
       </div>
       <h1>Russell Yang</h1>
-      <p>Russell is a senior at Yale interested in AI governance and private-public partnerships. <br><br>He is a member of the American Statistical Association Committee on Scientific Freedom and Human Rights, and previously, the Yale Advisory Committee on Investor Responsibility, where he made proxy voting recommendations for endowment stocks. <br><br>Russell is pursuing a BS in Electrical Engineering and Computer Science and Molecular Biophysics and Biochemistry from Yale.</p>
+      <p>
+        Russell is a senior at Yale interested in AI governance and private-public partnerships. <br><br>
+        He is a member of the American Statistical Association Committee on Scientific Freedom and Human Rights, and previously, the Yale Advisory Committee on Investor Responsibility, where he made proxy voting recommendations for endowment stocks. <br><br>
+        Russell is pursuing a BS in Electrical Engineering and Computer Science and Molecular Biophysics and Biochemistry from Yale.
+      </p>
     </section>
 
     <!-- Media Mentions Section -->
