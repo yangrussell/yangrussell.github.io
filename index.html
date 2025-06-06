@@ -35,9 +35,8 @@
     .contact-link, .email-link {
       border-bottom: none;
       padding: 2px 0;
-    
       white-space: pre-wrap;
-}
+    }
     img {
       display: block;
       max-width: 100%;
@@ -124,20 +123,19 @@
       font-size: 14px;
       display: block;
       margin: 0 auto;
-    
       white-space: pre-wrap;
-}
+    }
     #about .profile-photo .email-link {
       font-size: 14px;
       display: block;
       margin-top: 4px;
-    
       white-space: pre-wrap;
-}
+    }
     #about .bio-text {
       font-size: 18px;
       flex: 1;
-      color: #2E2B2A;}
+      color: #2E2B2A;
+    }
     #about .bio-text p {
       margin-bottom: 16px;
     }
@@ -179,6 +177,8 @@
     #media ul li a:hover::after {
       width: 100%;
     }
+
+    /* MOBILE-ONLY OVERRIDES */
     @media (max-width: 600px) {
       header .inner {
         flex-direction: column;
@@ -213,6 +213,18 @@
       }
       #media ul li a::after {
         display: none;  /* hide underlying hover bar on mobile */
+      }
+
+      /* Prevent “clicked” links from sticking to a different color on mobile */
+      header nav ul li a,
+      #media ul li a {
+        color: #1F3A57; /* force base link color */
+      }
+      header nav ul li a:visited,
+      #media ul li a:visited,
+      header nav ul li a:active,
+      #media ul li a:active {
+        color: #1F3A57; /* keep visited/active color identical to base */
       }
     }
   </style>
