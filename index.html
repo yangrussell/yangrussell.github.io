@@ -80,7 +80,7 @@
       color: #2E2B2A;
       transition: color 0.2s ease;
       border: none;
-      -webkit-tap-highlight-color: transparent; /* remove tap highlight */
+      -webkit-tap-highlight-color: transparent;
     }
     header nav ul li a:hover {
       color: #B69F6B;
@@ -111,7 +111,7 @@
       flex-shrink: 0;
       text-align: center;
       margin-right: 5px;
-      margin-top: 5px; /* moved down 2px from previous 3px */
+      margin-top: 5px;
     }
     #about .profile-photo img {
       width: 160px;
@@ -161,9 +161,9 @@
       font-size: 16px;
       color: #1F3A57;
       position: relative;
-      display: inline; /* inline for proper wrap */
-      line-height: 1.94; /* increased by 10% twice */
-      -webkit-tap-highlight-color: transparent; /* remove tap highlight */
+      display: inline;
+      line-height: 1.94;
+      -webkit-tap-highlight-color: transparent;
     }
     #media ul li a::after {
       content: '';
@@ -193,7 +193,7 @@
         gap: 16px;
       }
       #about {
-        margin-top: 5px; /* reduced by 5px from 10px to 5px */
+        margin-top: 5px;
       }
       #about .about-container {
         flex-direction: column;
@@ -204,30 +204,31 @@
       #about .profile-photo {
         margin-bottom: 20px;
         margin-right: 0;
-        padding-top: 65px; /* reduced by 5px from 70px */
+        padding-top: 65px;
       }
       #media ul {
-        padding-left: 0; /* ensure no indent on mobile */
+        padding-left: 0;
       }
       #media ul li a:hover {
-        border-bottom-color: #1F3A57; /* keep dotted underline on hover */
-        color: #1F3A57; /* no color change on hover */
+        border-bottom-color: #1F3A57;
+        color: #1F3A57;
       }
       #media ul li a::after {
-        display: none;  /* hide underlying hover bar on mobile */
+        display: none;
       }
 
-      /* Force all link states back to original blue on mobile */
+      /* Keep link+visited at base, only change on active */
       header nav ul li a,
       header nav ul li a:visited,
-      header nav ul li a:active,
-      header nav ul li a:focus,
       #media ul li a,
-      #media ul li a:visited,
-      #media ul li a:active,
-      #media ul li a:focus {
+      #media ul li a:visited {
         color: #1F3A57 !important;
         border-bottom-color: #1F3A57 !important;
+      }
+      header nav ul li a:active,
+      #media ul li a:active {
+        color: #B69F6B !important;
+        border-bottom-color: #B69F6B !important;
       }
     }
   </style>
