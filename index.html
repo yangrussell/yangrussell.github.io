@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +28,7 @@
       transition: color 0.2s ease, border-color 0.2s ease;
       display: inline; /* inline so wraps align */
       margin-bottom: 4px;
+      -webkit-tap-highlight-color: transparent; /* remove tap highlight */
     }
     a:hover {
       color: #B69F6B;
@@ -78,6 +80,7 @@
       color: #2E2B2A;
       transition: color 0.2s ease;
       border: none;
+      -webkit-tap-highlight-color: transparent; /* remove tap highlight */
     }
     header nav ul li a:hover {
       color: #B69F6B;
@@ -119,17 +122,15 @@
       display: block;
       margin-bottom: 10px;
     }
-    #about .profile-photo .contact-link {
+    #about .profile-photo .contact-link,
+    #about .profile-photo .email-link {
       font-size: 14px;
       display: block;
       margin: 0 auto;
       white-space: pre-wrap;
     }
     #about .profile-photo .email-link {
-      font-size: 14px;
-      display: block;
       margin-top: 4px;
-      white-space: pre-wrap;
     }
     #about .bio-text {
       font-size: 18px;
@@ -162,6 +163,7 @@
       position: relative;
       display: inline; /* inline for proper wrap */
       line-height: 1.94; /* increased by 10% twice */
+      -webkit-tap-highlight-color: transparent; /* remove tap highlight */
     }
     #media ul li a::after {
       content: '';
@@ -215,16 +217,17 @@
         display: none;  /* hide underlying hover bar on mobile */
       }
 
-      /* Prevent “clicked” links from sticking to a different color on mobile */
+      /* Force all link states back to original blue on mobile */
       header nav ul li a,
-      #media ul li a {
-        color: #1F3A57; /* force base link color */
-      }
       header nav ul li a:visited,
-      #media ul li a:visited,
       header nav ul li a:active,
-      #media ul li a:active {
-        color: #1F3A57; /* keep visited/active color identical to base */
+      header nav ul li a:focus,
+      #media ul li a,
+      #media ul li a:visited,
+      #media ul li a:active,
+      #media ul li a:focus {
+        color: #1F3A57 !important;
+        border-bottom-color: #1F3A57 !important;
       }
     }
   </style>
