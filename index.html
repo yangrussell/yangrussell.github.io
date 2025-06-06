@@ -182,6 +182,26 @@
 
     /* MOBILE-ONLY OVERRIDES */
     @media (max-width: 600px) {
+      /* Remove transitions on mobile for instant revert */
+      a {
+        transition: none !important;
+      }
+
+      /* Force all non-active states to blue */
+      a,
+      a:visited,
+      a:hover,
+      a:focus {
+        color: #1F3A57 !important;
+        border-bottom-color: #1F3A57 !important;
+      }
+
+      /* Only allow :active to go gold while pressing */
+      a:active {
+        color: #B69F6B !important;
+        border-bottom-color: #B69F6B !important;
+      }
+
       header .inner {
         flex-direction: column;
         text-align: center;
@@ -215,20 +235,6 @@
       }
       #media ul li a::after {
         display: none;
-      }
-
-      /* Keep link+visited at base, only change on active */
-      header nav ul li a,
-      header nav ul li a:visited,
-      #media ul li a,
-      #media ul li a:visited {
-        color: #1F3A57 !important;
-        border-bottom-color: #1F3A57 !important;
-      }
-      header nav ul li a:active,
-      #media ul li a:active {
-        color: #B69F6B !important;
-        border-bottom-color: #B69F6B !important;
       }
     }
   </style>
