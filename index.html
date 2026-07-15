@@ -1,286 +1,175 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Russell Yang</title>
-  <style>
-    /* RESET */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Baskerville', Georgia, serif;
-      color: #2E2B2A;
-      background-color: #F5F1E8;
-      line-height: 1.6;
-    }
-    a {
-      text-decoration: none;
-      color: #1F3A57; /* blue link */
-      border-bottom: 1px dotted #1F3A57;
-      transition: color 0.2s ease, border-color 0.2s ease;
-      display: inline; /* inline so wraps align */
-      margin-bottom: 4px;
-      -webkit-tap-highlight-color: transparent; /* remove tap highlight */
-    }
-    a:hover {
-      color: #B69F6B;
-      border-color: #B69F6B;
-    }
-    .contact-link, .email-link {
-      border-bottom: none;
-      padding: 2px 0;
-      white-space: pre-wrap;
-    }
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-    .wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    header, main {
-      width: 100%;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #F5F1E8;
-      border-bottom: 1px solid #D8CFC3;
-      z-index: 10;
-    }
-    header .inner {
-      display: flex;
-      justify-content: center;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 16px 20px;
-    }
-    header nav ul {
-      list-style: none;
-      display: flex;
-      gap: 24px;
-    }
-    header nav ul li a {
-      font-size: 14px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #2E2B2A;
-      transition: color 0.2s ease;
-      border: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    header nav ul li a:hover {
-      color: #B69F6B;
-    }
-    main {
-      padding-top: 260px;
-    }
-    #about {
-      margin-top: 60px;
-      margin-bottom: 20px;
-    }
-    #about .about-container {
-      display: flex;
-      align-items: flex-start;
-      gap: 25px;
-    }
-    section h2 {
-      font-size: 24px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border-bottom: 1px solid #D8CFC3;
-      padding-bottom: 8px;
-      margin-bottom: 24px;
-      color: #2E2B2A;
-    }
-    #about .profile-photo {
-      width: 160px;
-      flex-shrink: 0;
-      text-align: center;
-      margin-right: 5px;
-      margin-top: 5px;
-    }
-    #about .profile-photo img {
-      width: 160px;
-      height: 160px;
-      border-radius: 8px;
-      object-fit: cover;
-      border: 1px solid #D8CFC3;
-      display: block;
-      margin-bottom: 10px;
-    }
-    #about .profile-photo .contact-link,
-    #about .profile-photo .email-link {
-      font-size: 14px;
-      display: block;
-      margin: 0 auto;
-      white-space: pre-wrap;
-    }
-    #about .profile-photo .email-link {
-      margin-top: 4px;
-    }
-    #about .bio-text {
-      font-size: 18px;
-      flex: 1;
-      color: #2E2B2A;
-    }
-    #about .bio-text p {
-      margin-bottom: 16px;
-    }
-    #media h2 {
-      font-size: 24px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border-bottom: 1px solid #D8CFC3;
-      padding-bottom: 8px;
-      margin-bottom: 24px;
-      color: #2E2B2A;
-    }
-    #media ul {
-      list-style: none;
-      display: grid;
-      grid-gap: 12px;
-      width: 100%;
-      margin-left: 0;
-      padding-left: 0;
-    }
-    #media ul li a {
-      font-size: 16px;
-      color: #1F3A57;
-      position: relative;
-      display: inline;
-      line-height: 1.94;
-      -webkit-tap-highlight-color: transparent;
-    }
-    #media ul li a::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 1px;
-      background: #B69F6B;
-      transition: width 0.3s ease;
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-    }
-    #media ul li a:hover::after {
-      width: 100%;
-    }
+  <meta name="description" content="Russell Yang — AI for knowledge workers.">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ground: #FFFFFF;
+    --ink: #111114;
+    --secondary: #55555C;
+    --hairline: #E7E7E4;
+    --accent: #2244CC;
+    --whisper: #F7F7F5;
+    color-scheme: light;
+  }
+  html { background: var(--ground); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--ground);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-    /* MOBILE-ONLY OVERRIDES */
-    @media (max-width: 600px) {
-      /* Remove transitions on mobile for instant revert */
-      a {
-        transition: none !important;
-      }
+  .frame { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
 
-      /* Force all non-active states to blue */
-      a,
-      a:visited,
-      a:hover,
-      a:focus {
-        color: #1F3A57 !important;
-        border-bottom-color: #1F3A57 !important;
-      }
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    padding: 2.2rem 0 1.6rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  header nav { display: flex; flex-wrap: wrap; gap: 1.4rem; color: var(--secondary); }
+  header nav a:hover { color: var(--accent); }
 
-      /* Only allow :active to go gold while pressing */
-      a:active {
-        color: #B69F6B !important;
-        border-bottom-color: #B69F6B !important;
-      }
+  .grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+    padding: 3.2rem 0 4rem;
+  }
+  .rail img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 1.4rem;
+  }
+  .meta { display: grid; gap: 1rem; }
+  .meta .label { color: var(--secondary); margin-bottom: 0.15rem; }
+  .meta .value { font-size: 0.875rem; }
+  .meta a:hover { color: var(--accent); }
 
-      header .inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-      }
-      header nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 16px;
-      }
-      #about {
-        margin-top: 5px;
-      }
-      #about .about-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
-      }
-      #about .profile-photo {
-        margin-bottom: 20px;
-        margin-right: 0;
-        padding-top: 65px;
-      }
-      #media ul {
-        padding-left: 0;
-      }
-      #media ul li a:hover {
-        border-bottom-color: #1F3A57;
-        color: #1F3A57;
-      }
-      #media ul li a::after {
-        display: none;
-      }
-    }
-  </style>
+  .lede {
+    font-size: 1.625rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.32;
+    margin-top: -7px; /* trim the font's leading so the cap height tops out level with the photo */
+    margin-bottom: 1.1rem;
+    text-wrap: balance;
+  }
+  @supports (text-box: trim-start cap) {
+    .lede { margin-top: 0; text-box: trim-start cap; }
+  }
+  .bio p {
+    font-size: 0.9375rem;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+  }
+
+  .register { margin-top: 3.2rem; }
+  .register-head {
+    font-size: 1.625rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.32;
+    color: var(--ink);
+    padding-bottom: 0.6rem; /* + the first row's 0.8rem top padding = 1.4rem, matching the gap under the lede */
+  }
+  .register ul { list-style: none; padding: 0; margin: 0; }
+  .register li { border-bottom: 1px solid var(--hairline); }
+  .register li a {
+    display: grid;
+    grid-template-columns: 13.5rem 1fr;
+    gap: 1.5rem;
+    padding: 0.8rem 0.4rem;
+    align-items: baseline;
+    transition: background 0.12s ease;
+  }
+  .register li a:hover { background: var(--whisper); }
+  .register li a:hover .title { color: var(--accent); }
+  .register .src { color: var(--secondary); }
+  .register .title { font-size: 0.9375rem; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; gap: 2.4rem; }
+    .rail { display: flex; gap: 1.4rem; align-items: center; }
+    .rail img { width: 112px; margin-bottom: 0; }
+    .register li a { grid-template-columns: 1fr; gap: 0.15rem; padding: 0.7rem 0.2rem; }
+    .register { margin-top: 2.4rem; }
+    header { flex-direction: column; align-items: center; gap: 0.8rem; }
+    header nav { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .register li a { transition: none; }
+  }
+</style>
 </head>
 <body>
+
+<div class="frame">
   <header>
-    <div class="inner">
-      <nav>
-        <ul>
-          <li><a href="https://russellyang.com/resume.html" target="_blank">Resume</a></li>
-          <li><a href="https://www.linkedin.com/in/russell-yang" target="_blank">LinkedIn</a></li>
-          <li><a href="https://scholar.google.com/citations?user=-Qb7KsMAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
-        </ul>
-      </nav>
-    </div>
+    <nav class="mono" aria-label="Links">
+      <a href="./resume.html">Resume</a>
+      <a href="https://www.linkedin.com/in/russell-yang">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=-Qb7KsMAAAAJ&amp;hl=en">Google Scholar</a>
+    </nav>
   </header>
-  <main class="wrapper">
-    <section id="about">
-      <div class="about-container">
-        <div class="profile-photo">
-          <img src="./headshotCropped.jpg" alt="Profile Photo">
-          <a class="contact-link" href="./russellyang.vcf" download>📥  Contact Card</a>
-          <a class="email-link" href="mailto:russell.a.yang@gmail.com">✉️  Email Me</a>
+
+  <div class="grid">
+    <aside class="rail">
+      <img src="./headshot-480.jpg" alt="Portrait of Russell Yang">
+      <div class="meta">
+        <div>
+          <div class="label mono">Email</div>
+          <div class="value"><a href="mailto:russell.a.yang@gmail.com">russell.a.yang@gmail.com</a></div>
         </div>
-        <div class="bio-text">
-          <p>Russell Yang is interested in investing and technology.</p>
-          <p>He is a member of the American Statistical Association Committee on Scientific Freedom and Human Rights, and previously, the Yale Advisory Committee on Investor Responsibility, where he made proxy voting recommendations for endowment stocks.</p>
-          <p>Russell received a BS, magna cum laude, in Electrical Engineering and Computer Science and Molecular Biophysics and Biochemistry from Yale, obtaining the Edward O. Lanphier Prize for ranking first in the Electrical Engineering Department.</p>
+        <div>
+          <div class="label mono">Contact card</div>
+          <div class="value"><a href="./russellyang.vcf" download>russellyang.vcf ↓</a></div>
         </div>
       </div>
-    </section>
-    <section id="media">
-      <h2>Media Mentions</h2>
-      <ul>
-        <li><a href="https://snorkel.ai/blog/judgment-bench-comparing-rubric-and-preference-evaluation-for-quality-assessment-legal-ai/" target="_blank">Snorkel AI — Industry talk and Q&amp;A about quality in legal AI</a></li>
-        <li><a href="https://mbb.yale.edu/news/five-mbb-seniors-honored-yale-school-science-and-engineering-association" target="_blank">Yale Molecular Biophysics &amp; Biochemistry — Named YSEA Outstanding Undergraduate</a></li>
-        <li><a href="https://engineering.yale.edu/news-and-events/news/tau-beta-pi-yale-celebrates-centennial-reflects-yale-roots" target="_blank">Yale Engineering News — Engineering Honor Society celebrates 100 years</a></li>
-        <li><a href="https://link.springer.com/article/10.1007/s00146-023-01655-8" target="_blank">Springer — Article about privacy concerns in AI fall prediction</a></li>
-        <li><a href="https://yaledailynews.com/blog/2023/09/29/new-club-opens-the-door-for-yalies-to-learn-about-the-real-estate-industry/" target="_blank">Yale Daily News — Real Estate Group launches</a></li>
-        <li><a href="https://yaledailynews.com/blog/2023/03/02/as-seas-expands-students-and-faculty-question-future-of-pure-sciences-at-yale/" target="_blank">Yale Daily News — Expansion of school</a></li>
-        <li><a href="https://americanprotege.com/wp-content/uploads/2019/12/Summer-Gala-Concert-at-Stern-June-8-2019-7_30PM-artists.pdf#page=12" target="_blank">American Protege — Carnegie Hall performance program</a></li>
-        <li><a href="https://micromasters.mit.edu/learner/russellyang" target="_blank">MIT — MicroMasters program</a></li>
-        <li><a href="https://news.mit.edu/2020/agelab-omega-scholarships-1020" target="_blank">MIT News — Senior citizen tech literacy program</a></li>
-        <li><a href="https://www.nasdaq.com/press-release/mit-agelabs-omega-program-and-five-star-senior-living-award-$5000-scholarships-to" target="_blank">Nasdaq — Press release for senior citizen tech literacy program</a></li>
-      </ul>
-    </section>
-  </main>
+    </aside>
+
+    <main>
+      <p class="lede">AI for knowledge workers</p>
+      <div class="bio">
+        <p>Russell Yang is a member of the American Statistical Association Committee on Scientific Freedom and Human Rights, and previously served on the Yale Advisory Committee on Investor Responsibility, where he made proxy voting recommendations for endowment stocks.</p>
+        <p>He received a BS, magna cum laude, in Electrical Engineering &amp; Computer Science and Molecular Biophysics &amp; Biochemistry from Yale, and was awarded the Edward O. Lanphier Prize for ranking first in the Electrical Engineering department.</p>
+      </div>
+
+      <section class="register">
+        <div class="register-head">Media mentions</div>
+        <ul>
+          <li><a href="https://snorkel.ai/blog/judgment-bench-comparing-rubric-and-preference-evaluation-for-quality-assessment-legal-ai/"><span class="src mono">Snorkel AI</span><span class="title">AI industry talk and Q&amp;A on quality in legal AI</span></a></li>
+          <li><a href="https://www.linkedin.com/posts/pierce-kelaita-is-a-research-scientist-ugcPost-7455890636584480768-ejiS/"><span class="src mono">Cambridge Business School</span><span class="title">Legal industry talk on quality in legal AI</span></a></li>
+          <li><a href="https://mbb.yale.edu/news/five-mbb-seniors-honored-yale-school-science-and-engineering-association"><span class="src mono">Yale MB&amp;B</span><span class="title">Named YSEA Outstanding Undergraduate</span></a></li>
+          <li><a href="https://engineering.yale.edu/news-and-events/news/tau-beta-pi-yale-celebrates-centennial-reflects-yale-roots"><span class="src mono">Yale Engineering</span><span class="title">Tau Beta Pi at Yale celebrates its centennial</span></a></li>
+          <li><a href="https://link.springer.com/article/10.1007/s00146-023-01655-8"><span class="src mono">Springer</span><span class="title">Privacy concerns in AI-based fall prediction</span></a></li>
+          <li><a href="https://yaledailynews.com/blog/2023/09/29/new-club-opens-the-door-for-yalies-to-learn-about-the-real-estate-industry/"><span class="src mono">Yale Daily News</span><span class="title">Real Estate Group launches</span></a></li>
+          <li><a href="https://yaledailynews.com/blog/2023/03/02/as-seas-expands-students-and-faculty-question-future-of-pure-sciences-at-yale/"><span class="src mono">Yale Daily News</span><span class="title">On the expansion of SEAS</span></a></li>
+          <li><a href="https://americanprotege.com/wp-content/uploads/2019/12/Summer-Gala-Concert-at-Stern-June-8-2019-7_30PM-artists.pdf#page=12"><span class="src mono">American Protégé</span><span class="title">Carnegie Hall performance program</span></a></li>
+          <li><a href="https://news.mit.edu/2020/agelab-omega-scholarships-1020"><span class="src mono">MIT News</span><span class="title">Senior citizen tech literacy program</span></a></li>
+          <li><a href="https://www.nasdaq.com/press-release/mit-agelabs-omega-program-and-five-star-senior-living-award-$5000-scholarships-to"><span class="src mono">Nasdaq</span><span class="title">Press release for senior citizen tech literacy program</span></a></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</div>
 </body>
 </html>
