@@ -93,6 +93,7 @@
   }
   .register ul { list-style: none; padding: 0; margin: 0; }
   .register li { border-bottom: 1px solid var(--hairline); }
+  .register li:nth-last-child(2) { border-bottom: none; }
   .register li a {
     display: grid;
     grid-template-columns: 13.5rem 1fr;
@@ -110,6 +111,8 @@
     .grid { grid-template-columns: 1fr; gap: 2.4rem; }
     .rail { display: flex; gap: 1.4rem; align-items: center; }
     .rail img { width: 112px; margin-bottom: 0; }
+    .rail .meta { margin-left: 0.5rem; }
+    .lede { margin-top: 0.25rem; text-box: normal; } /* + the bio's ~4px trailing half-leading = the 2.4rem grid gap above Media mentions */
     .register li a { grid-template-columns: 1fr; gap: 0.15rem; padding: 0.7rem 0.2rem; }
     .register { margin-top: 2.4rem; }
     header { flex-direction: column; align-items: center; gap: 0.8rem; }
