@@ -107,6 +107,95 @@
   .register .src { color: var(--secondary); }
   .register .title { font-size: 0.9375rem; }
 
+  /* Featured mention — expanded on load, collapses on first scroll; toggles on click */
+  .featured { border-bottom: 1px solid var(--hairline); }
+  .featured-head {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.8rem 0.4rem;
+    background: none;
+    border: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.12s ease;
+  }
+  .featured-head:hover { background: var(--whisper); }
+  .featured-head:hover .featured-title { color: var(--accent); }
+  .featured-lead {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 13.5rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+  .featured-title { font-size: 0.9375rem; }
+  /* A gleam shimmers across the title text to invite a hover */
+  .featured-title {
+    background-image: linear-gradient(100deg, var(--ink) 0 43%, #9a9aa1 50%, var(--ink) 57% 100%);
+    background-size: 220% 100%;
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: featuredTextShimmer 4.6s ease-in-out infinite;
+  }
+  @keyframes featuredTextShimmer {
+    0%        { background-position: 100% 0; }
+    50%, 100% { background-position: 0% 0; }
+  }
+
+  .featured-panel {
+    display: grid;
+    grid-template-rows: 0fr; /* closed by default */
+    transition: grid-template-rows 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .featured-panel__inner { overflow: hidden; min-height: 0; }
+
+  /* Open on keyboard focus (all devices) */
+  .featured:focus-within .featured-panel { grid-template-rows: 1fr; }
+  /* Open on hover (pointer devices); closes when the pointer leaves */
+  @media (hover: hover) {
+    .featured:hover .featured-panel { grid-template-rows: 1fr; }
+  }
+  /* Tap toggle (touch devices, where there is no hover) */
+  .featured.is-open .featured-panel { grid-template-rows: 1fr; }
+
+  /* Stop the shimmer once the row is engaged; show a solid accent title */
+  .featured:hover .featured-title,
+  .featured:focus-within .featured-title,
+  .featured.is-open .featured-title {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: var(--accent);
+    color: var(--accent);
+  }
+  .featured-body { padding: 0.1rem 0.4rem 1.6rem; max-width: 41rem; }
+  /* Speaker wall — captured from the summit's own speaker board */
+  .fds-wall { margin: 0.3rem 0 0; }
+  .fds-link { display: block; }
+  .fds-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #0d1c34;
+    border: 1px solid var(--hairline);
+    transition: border-color 0.2s ease;
+  }
+  .fds-link:hover .fds-img { border-color: var(--accent); }
+  .featured-link {
+    display: inline-block;
+    margin-top: 1.3rem;
+    font-size: 0.8125rem;
+    color: var(--secondary);
+  }
+  .featured-link:hover { color: var(--accent); }
+
   @media (max-width: 760px) {
     .grid { grid-template-columns: 1fr; gap: 2.4rem; }
     .rail { display: flex; gap: 1.4rem; align-items: center; }
@@ -114,12 +203,18 @@
     .rail .meta { margin-left: 0.5rem; }
     .lede { margin-top: 0.25rem; text-box: normal; } /* + the bio's ~4px trailing half-leading = the 2.4rem grid gap above Media mentions */
     .register li a { grid-template-columns: 1fr; gap: 0.15rem; padding: 0.7rem 0.2rem; }
+    .featured-head { padding: 0.7rem 0.2rem; }
+    .featured-lead { grid-template-columns: 1fr; gap: 0.15rem; }
+    .featured-body { padding: 0.1rem 0.2rem 1.4rem; }
     .register { margin-top: 2.4rem; }
     header { flex-direction: column; align-items: center; gap: 0.8rem; }
     header nav { justify-content: center; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .register li a { transition: none; }
+    .register li a,
+    .featured-head,
+    .featured-panel { transition: none; }
+    .featured-title { animation: none; background: none; -webkit-text-fill-color: var(--ink); color: var(--ink); }
   }
 </style>
 </head>
@@ -158,6 +253,28 @@
 
       <section class="register">
         <div class="register-head">Media mentions</div>
+
+        <div class="featured">
+          <button type="button" class="featured-head" aria-expanded="false" aria-controls="feat-panel">
+            <span class="featured-lead">
+              <span class="src mono">Snorkel AI</span>
+              <span class="featured-title">Speaking at the Frontier Data Summit</span>
+            </span>
+          </button>
+          <div class="featured-panel" id="feat-panel">
+            <div class="featured-panel__inner">
+              <div class="featured-body">
+                <figure class="fds-wall">
+                  <a class="fds-link" href="https://www.frontierdatasummit.ai/" target="_blank" rel="noopener noreferrer" aria-label="Frontier Data Summit speakers — view the summit site">
+                    <img class="fds-img" src="./images/fds/frontier-data-summit-wall.jpg" alt="Frontier Data Summit speakers, including Russell Yang alongside François Chollet, Dawn Song, Sanmi Koyejo, Niko Grupen, Braden Hancock, Alex Ratner and Alex Shaw" width="1600" height="977">
+                  </a>
+                </figure>
+                <a class="featured-link" href="https://www.frontierdatasummit.ai/" target="_blank" rel="noopener noreferrer">frontierdatasummit.ai ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <ul>
           <li><a href="https://snorkel.ai/blog/judgment-bench-comparing-rubric-and-preference-evaluation-for-quality-assessment-legal-ai/"><span class="src mono">Snorkel AI</span><span class="title">AI industry talk and Q&amp;A on quality in legal AI</span></a></li>
           <li><a href="https://www.linkedin.com/posts/pierce-kelaita-is-a-research-scientist-ugcPost-7455890636584480768-ejiS/"><span class="src mono">Cambridge Business School</span><span class="title">Legal industry talk on quality in legal AI</span></a></li>
@@ -174,5 +291,23 @@
     </main>
   </div>
 </div>
+
+<script>
+  (function () {
+    var featured = document.querySelector('.featured');
+    if (!featured) return;
+    var head = featured.querySelector('.featured-head');
+
+    // Starts closed. Pointer devices open it on hover and close on leave (CSS);
+    // keyboard focus opens it too (CSS). Touch devices have no hover, so tap toggles.
+    var noHover = window.matchMedia && window.matchMedia('(hover: none)').matches;
+    if (noHover) {
+      head.addEventListener('click', function () {
+        var open = featured.classList.toggle('is-open');
+        head.setAttribute('aria-expanded', String(open));
+      });
+    }
+  })();
+</script>
 </body>
 </html>
