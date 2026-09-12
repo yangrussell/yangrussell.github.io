@@ -76,10 +76,46 @@
   @supports (text-box: trim-start cap) {
     .lede { margin-top: 0; text-box: trim-start cap; }
   }
+  /* Rotating qualifier, inline after the lede — sequential crossfade through four phrases */
+  .lede-cyc { display: inline-grid; vertical-align: baseline; }
+  .lede-cyc .cyc {
+    grid-column: 1;
+    grid-row: 1;
+    opacity: 0;
+    white-space: nowrap;
+  }
+  .lede-cyc .cyc:nth-child(1) { animation: cyc1 8s ease-in-out infinite; }
+  .lede-cyc .cyc:nth-child(2) { animation: cyc2 8s ease-in-out infinite; }
+  .lede-cyc .cyc:nth-child(3) { animation: cyc3 8s ease-in-out infinite; }
+  .lede-cyc .cyc:nth-child(4) { animation: cyc4 8s ease-in-out infinite; }
+  @keyframes cyc1 { 0%, 22% { opacity: 1; } 25%, 97% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes cyc2 { 0%, 25% { opacity: 0; } 28%, 47% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  @keyframes cyc3 { 0%, 50% { opacity: 0; } 53%, 72% { opacity: 1; } 75%, 100% { opacity: 0; } }
+  @keyframes cyc4 { 0%, 75% { opacity: 0; } 78%, 94% { opacity: 1; } 97%, 100% { opacity: 0; } }
   .bio p {
     font-size: 0.9375rem;
     color: var(--ink);
     margin-bottom: 0.9rem;
+  }
+  /* liftlab link — a subtle gleam pulse (matching the featured title), not a blue link */
+  .bio a.lift {
+    background-image: linear-gradient(100deg, var(--ink) 0 40%, #9a9aa1 50%, var(--ink) 60% 100%);
+    background-size: 220% 100%;
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: liftShimmer 4.6s ease-in-out infinite;
+  }
+  @keyframes liftShimmer { 0% { background-position: 100% 0; } 50%, 100% { background-position: 0% 0; } }
+  .bio a.lift:hover {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: var(--ink);
+    color: var(--ink);
+    text-decoration: underline;
   }
 
   .register { margin-top: 3.2rem; }
@@ -163,13 +199,21 @@
   @media (hover: hover) {
     .featured:hover .featured-panel { grid-template-rows: 1fr; }
   }
-  /* Tap toggle (touch devices, where there is no hover) */
-  .featured.is-open .featured-panel { grid-template-rows: 1fr; }
+  /* Touch devices (no hover): open by default; tap the header to collapse/expand */
+  @media (hover: none) {
+    .featured-panel { grid-template-rows: 1fr; }
+    .featured.is-collapsed .featured-panel { grid-template-rows: 0fr; }
+    .featured-title {
+      animation: none;
+      background: none;
+      -webkit-text-fill-color: var(--ink);
+      color: var(--ink);
+    }
+  }
 
-  /* Stop the shimmer once the row is engaged; show a solid accent title */
+  /* Stop the shimmer once the row is engaged (pointer/keyboard); solid accent title */
   .featured:hover .featured-title,
-  .featured:focus-within .featured-title,
-  .featured.is-open .featured-title {
+  .featured:focus-within .featured-title {
     animation: none;
     background: none;
     -webkit-text-fill-color: var(--accent);
@@ -215,6 +259,9 @@
     .featured-head,
     .featured-panel { transition: none; }
     .featured-title { animation: none; background: none; -webkit-text-fill-color: var(--ink); color: var(--ink); }
+    .lede-cyc .cyc { animation: none; opacity: 0; }
+    .lede-cyc .cyc:nth-child(1) { opacity: 1; }
+    .bio a.lift { animation: none; background: none; -webkit-text-fill-color: var(--ink); color: var(--ink); text-decoration: underline; }
   }
 </style>
 </head>
@@ -245,10 +292,11 @@
     </aside>
 
     <main>
-      <p class="lede">AI for knowledge workers</p>
+      <p class="lede">AI for knowledge workers <span class="lede-cyc" aria-label="in judgment-rich domains, in law, in finance, in consulting"><span class="cyc" aria-hidden="true">in judgment-rich domains</span><span class="cyc" aria-hidden="true">in law</span><span class="cyc" aria-hidden="true">in finance</span><span class="cyc" aria-hidden="true">in consulting</span></span></p>
       <div class="bio">
-        <p>Russell Yang is a member of the American Statistical Association Committee on Scientific Freedom and Human Rights, and previously served on the Yale Advisory Committee on Investor Responsibility, where he made proxy voting recommendations for endowment stocks.</p>
-        <p>He received a BS, magna cum laude, in Electrical Engineering &amp; Computer Science and Molecular Biophysics &amp; Biochemistry from Yale, and was awarded the Edward O. Lanphier Prize for ranking first in the Electrical Engineering department.</p>
+        <p>Russell has served on the Yale Advisory Committee on Investor Responsibility and, since 2023, on the American Statistical Association Committee on Scientific Freedom and Human Rights.</p>
+        <p>He led JudgmentBench in the <a class="lift" href="https://law.stanford.edu/liftlab/" target="_blank" rel="noopener noreferrer">liftlab</a> with Harvey, Snorkel, and 50+ lawyer contributors to define quality in legal AI. Talks at Cambridge Business School, Snorkel AI, and panelist at Snorkel Frontier Data Summit.</p>
+        <p>Russell received a BS, magna cum laude, in Electrical Engineering &amp; Computer Science and Molecular Biophysics &amp; Biochemistry from Yale, and was awarded the Edward O. Lanphier Prize for ranking first in the Electrical Engineering department.</p>
       </div>
 
       <section class="register">
@@ -298,13 +346,14 @@
     if (!featured) return;
     var head = featured.querySelector('.featured-head');
 
-    // Starts closed. Pointer devices open it on hover and close on leave (CSS);
-    // keyboard focus opens it too (CSS). Touch devices have no hover, so tap toggles.
+    // Pointer devices: closed, opens on hover/focus (CSS). Touch devices (no hover):
+    // open by default; tapping the header collapses/expands it.
     var noHover = window.matchMedia && window.matchMedia('(hover: none)').matches;
     if (noHover) {
+      head.setAttribute('aria-expanded', 'true');
       head.addEventListener('click', function () {
-        var open = featured.classList.toggle('is-open');
-        head.setAttribute('aria-expanded', String(open));
+        var collapsed = featured.classList.toggle('is-collapsed');
+        head.setAttribute('aria-expanded', String(!collapsed));
       });
     }
   })();
