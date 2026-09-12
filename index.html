@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Set before first paint so the lede can start hidden only when JS will run -->
+  <script>document.documentElement.classList.add('js');</script>
   <title>Russell Yang</title>
   <meta name="description" content="Russell Yang — AI for knowledge workers in judgment-rich domains like law, finance, and consulting.">
   <script type="application/ld+json">
@@ -85,6 +87,19 @@
   }
   @supports (text-box: trim-start cap) {
     .lede { margin-top: 0; text-box: trim-start cap; }
+  }
+  /* Intro: when JS will run, the lede starts hidden and gently fades up once the
+     rotator is built — a short, tasteful entrance that also hides the swap from
+     the static sentence. No-JS visitors (no .js flag) see it immediately. */
+  .js .lede { opacity: 0; transform: translateY(6px); }
+  .lede.is-ready {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .lede { opacity: 1; transform: none; }
+    .lede.is-ready { transition: none; }
   }
   /* Rotating qualifier, inline after the lede — sequential crossfade through four phrases */
   .lede-cyc { display: inline-grid; vertical-align: baseline; }
@@ -364,19 +379,23 @@
     var lede = document.getElementById('lede');
     if (!lede) return;
     var phrases = (lede.getAttribute('data-cyc') || '').split('|').filter(Boolean);
-    if (phrases.length < 2) return;
-    var cyc = document.createElement('span');
-    cyc.className = 'lede-cyc';
-    cyc.setAttribute('aria-label', 'in judgment-rich domains like law, finance, and consulting');
-    phrases.forEach(function (phrase) {
-      var span = document.createElement('span');
-      span.className = 'cyc';
-      span.setAttribute('aria-hidden', 'true');
-      span.textContent = phrase;
-      cyc.appendChild(span);
-    });
-    lede.textContent = 'AI for knowledge workers ';
-    lede.appendChild(cyc);
+    if (phrases.length >= 2) {
+      var cyc = document.createElement('span');
+      cyc.className = 'lede-cyc';
+      cyc.setAttribute('aria-label', 'in judgment-rich domains like law, finance, and consulting');
+      phrases.forEach(function (phrase) {
+        var span = document.createElement('span');
+        span.className = 'cyc';
+        span.setAttribute('aria-hidden', 'true');
+        span.textContent = phrase;
+        cyc.appendChild(span);
+      });
+      lede.textContent = 'AI for knowledge workers ';
+      lede.appendChild(cyc);
+    }
+    // Reveal after the rotator is in place — whether or not we rebuilt it — so the
+    // JS-only opacity:0 never sticks. A frame at opacity 0 first lets it transition.
+    requestAnimationFrame(function () { lede.classList.add('is-ready'); });
   })();
 
   (function () {
