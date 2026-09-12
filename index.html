@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Russell Yang</title>
-  <meta name="description" content="Russell Yang — AI for knowledge workers.">
+  <meta name="description" content="Russell Yang — AI for knowledge workers in judgment-rich domains like law, finance, and consulting.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Russell Yang",
+    "url": "https://russellyang.com",
+    "description": "AI for knowledge workers in judgment-rich domains like law, finance, and consulting.",
+    "knowsAbout": ["Legal AI", "AI evaluation", "AI for finance", "AI for consulting"]
+  }
+  </script>
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
@@ -296,7 +306,10 @@
     </aside>
 
     <main>
-      <p class="lede">AI for knowledge workers <span class="lede-cyc" aria-label="in judgment-rich domains, in law, in finance, in consulting"><span class="cyc" aria-hidden="true">in judgment-rich domains</span><span class="cyc" aria-hidden="true">in law</span><span class="cyc" aria-hidden="true">in finance</span><span class="cyc" aria-hidden="true">in consulting</span></span></p>
+      <!-- Raw text reads as one coherent sentence for crawlers/LLMs that ignore CSS
+           and don't run JS. The rotating qualifier is built by JS as an enhancement;
+           see the script at the end of the body. -->
+      <p class="lede" id="lede" data-cyc="in judgment-rich domains|in law|in finance|in consulting">AI for knowledge workers in judgment-rich domains like law, finance, and consulting.</p>
       <div class="bio">
         <p>Russell has served on the Yale Advisory Committee on Investor Responsibility and, since 2023, on the American Statistical Association Committee on Scientific Freedom and Human Rights.</p>
         <p>He led <a class="lift" href="https://snorkel.ai/blog/judgment-bench-comparing-rubric-and-preference-evaluation-for-quality-assessment-legal-ai/" target="_blank" rel="noopener noreferrer">JudgmentBench</a> in the Stanford <a class="lift" href="https://law.stanford.edu/liftlab/" target="_blank" rel="noopener noreferrer">liftlab</a>, collaborating with Harvey, Snorkel, and 50+ lawyer contributors to define quality in legal AI and giving talks at the Cambridge Business School and Snorkel AI. In October, he’ll serve as a panelist at the Snorkel Frontier Data Summit.</p>
@@ -344,6 +357,28 @@
 </div>
 
 <script>
+  // Progressive enhancement: swap the plain lede sentence for the rotating
+  // qualifier. The static HTML stays a coherent sentence for machines that
+  // don't run JS; here we rebuild the crossfading version for visitors.
+  (function () {
+    var lede = document.getElementById('lede');
+    if (!lede) return;
+    var phrases = (lede.getAttribute('data-cyc') || '').split('|').filter(Boolean);
+    if (phrases.length < 2) return;
+    var cyc = document.createElement('span');
+    cyc.className = 'lede-cyc';
+    cyc.setAttribute('aria-label', 'in judgment-rich domains like law, finance, and consulting');
+    phrases.forEach(function (phrase) {
+      var span = document.createElement('span');
+      span.className = 'cyc';
+      span.setAttribute('aria-hidden', 'true');
+      span.textContent = phrase;
+      cyc.appendChild(span);
+    });
+    lede.textContent = 'AI for knowledge workers ';
+    lede.appendChild(cyc);
+  })();
+
   (function () {
     var featured = document.querySelector('.featured');
     if (!featured) return;
