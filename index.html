@@ -110,12 +110,16 @@
     animation: liftShimmer 4.6s ease-in-out infinite;
   }
   @keyframes liftShimmer { 0% { background-position: 100% 0; } 50%, 100% { background-position: 0% 0; } }
-  .bio a.lift:hover {
-    animation: none;
-    background: none;
-    -webkit-text-fill-color: var(--accent);
-    color: var(--accent);
-    text-decoration: none;
+  /* Solid accent only on real hover pointers — a tap on touch devices must not
+     leave the link stuck blue after navigating back */
+  @media (hover: hover) {
+    .bio a.lift:hover {
+      animation: none;
+      background: none;
+      -webkit-text-fill-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
   }
 
   .register { margin-top: 3.2rem; }
