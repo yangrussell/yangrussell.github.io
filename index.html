@@ -45,6 +45,17 @@
   a { color: inherit; text-decoration: none; }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+  /* Visually hidden, but present in the DOM for AI, search, and screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: normal;
+    border: 0;
+  }
+
   .frame { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
 
   header {
@@ -365,8 +376,11 @@
               <div class="featured-body">
                 <figure class="fds-wall">
                   <a class="fds-link" href="https://www.frontierdatasummit.ai/" target="_blank" rel="noopener noreferrer" aria-label="Frontier Data Summit speakers — view the summit site">
-                    <img class="fds-img" src="./images/fds/frontier-data-summit-wall.jpg" alt="Frontier Data Summit speakers, including Russell Yang alongside François Chollet, Dawn Song, Sanmi Koyejo, Niko Grupen, Braden Hancock, Alex Ratner and Alex Shaw" width="1600" height="977">
+                    <img class="fds-img" src="./images/fds/frontier-data-summit-wall.jpg" alt="Frontier Data Summit speaker board featuring Russell Yang among eight speakers" width="1600" height="977" aria-describedby="fds-desc">
                   </a>
+                  <!-- Transcription of the text baked into the speaker-board image, so its
+                       contents are readable to AI, search, and screen readers. -->
+                  <figcaption id="fds-desc" class="sr-only">Frontier Data Summit speaker board. Speakers: François Chollet, Co-Creator of ARC Prize and creator of Keras &amp; ARC-AGI; Dawn Song, Co-Director of Berkeley RDI and Co-Founder of Virtue AI; Sanmi Koyejo, Director of the Stanford STAIR Lab and Co-Founder of Virtue AI; Niko Grupen, Head of Applied Research at Harvey; Braden Hancock, AI Researcher &amp; Investor and Partner at Laude; Alex Ratner, CEO &amp; Founder of Snorkel AI; Russell Yang, Applied Scientist II at Microsoft and Project Lead of JudgmentBench; and Alex Shaw, Co-Creator of Terminal Bench &amp; Harbor.</figcaption>
                 </figure>
                 <a class="featured-link" href="https://www.frontierdatasummit.ai/" target="_blank" rel="noopener noreferrer">frontierdatasummit.ai ↗</a>
               </div>
