@@ -6,14 +6,14 @@
   <!-- Set before first paint so the lede can start hidden only when JS will run -->
   <script>document.documentElement.classList.add('js');</script>
   <title>Russell Yang</title>
-  <meta name="description" content="Russell Yang — AI for knowledge workers in judgment-rich domains like law, finance, and consulting.">
+  <meta name="description" content="Russell Yang — AI for knowledge workers in high-judgment domains like law, finance, and consulting.">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Russell Yang",
     "url": "https://russellyang.com",
-    "description": "AI for knowledge workers in judgment-rich domains like law, finance, and consulting.",
+    "description": "AI for knowledge workers in high-judgment domains like law, finance, and consulting.",
     "knowsAbout": ["Legal AI", "AI evaluation", "AI for finance", "AI for consulting"]
   }
   </script>
@@ -353,7 +353,7 @@
       <!-- Raw text reads as one coherent sentence for crawlers/LLMs that ignore CSS
            and don't run JS. The rotating qualifier is built by JS as an enhancement;
            see the script at the end of the body. -->
-      <p class="lede" id="lede" data-cyc="in judgment-rich domains|in law|in finance|in consulting">AI for knowledge workers in judgment-rich domains like law, finance, and consulting.</p>
+      <p class="lede" id="lede" data-cyc="in high-judgment domains|in law|in finance|in consulting">AI for knowledge workers in high-judgment domains like law, finance, and consulting.</p>
       <div class="bio">
         <p>Russell is an Applied Scientist at Microsoft focused on evals and experimentation for Copilot in Office.</p>
         <p>He has served on the Yale Advisory Committee on Investor Responsibility and, since 2023, on the American Statistical Association Committee on Scientific Freedom and Human Rights.</p>
@@ -415,7 +415,7 @@
       if (phrases.length >= 2) {
         var cyc = document.createElement('span');
         cyc.className = 'lede-cyc';
-        cyc.setAttribute('aria-label', 'in judgment-rich domains like law, finance, and consulting');
+        cyc.setAttribute('aria-label', 'in high-judgment domains like law, finance, and consulting');
         phrases.forEach(function (phrase) {
           var span = document.createElement('span');
           span.className = 'cyc';
