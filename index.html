@@ -56,7 +56,7 @@
     border-bottom: 1px solid var(--hairline);
   }
   header nav { display: flex; flex-wrap: wrap; gap: 1.4rem; color: var(--secondary); }
-  header nav a:hover { color: var(--accent); }
+  @media (hover: hover) { header nav a:hover { color: var(--accent); } }
 
   .grid {
     display: grid;
@@ -74,7 +74,7 @@
   .meta { display: grid; gap: 1rem; }
   .meta .label { color: var(--secondary); margin-bottom: 0.15rem; }
   .meta .value { font-size: 0.875rem; }
-  .meta a:hover { color: var(--accent); }
+  @media (hover: hover) { .meta a:hover { color: var(--accent); } }
 
   .lede {
     font-size: 1.625rem;
@@ -173,8 +173,10 @@
     align-items: baseline;
     transition: background 0.12s ease;
   }
-  .register li a:hover { background: var(--whisper); }
-  .register li a:hover .title { color: var(--accent); }
+  @media (hover: hover) {
+    .register li a:hover { background: var(--whisper); }
+    .register li a:hover .title { color: var(--accent); }
+  }
   .register .src { color: var(--secondary); }
   .register .title { font-size: 0.9375rem; }
 
@@ -194,8 +196,10 @@
     cursor: pointer;
     transition: background 0.12s ease;
   }
-  .featured-head:hover { background: var(--whisper); }
-  .featured-head:hover .featured-title { color: var(--accent); }
+  @media (hover: hover) {
+    .featured-head:hover { background: var(--whisper); }
+    .featured-head:hover .featured-title { color: var(--accent); }
+  }
   .featured-lead {
     flex: 1;
     display: grid;
@@ -246,13 +250,22 @@
     }
   }
 
-  /* Stop the shimmer once the row is engaged (pointer/keyboard); solid accent title */
-  .featured:hover .featured-title,
+  /* Stop the shimmer once the row is engaged; solid accent title.
+     Keyboard focus applies on all devices; hover only where a hover pointer
+     exists, so a tap on touch devices doesn't leave it stuck engaged. */
   .featured:focus-within .featured-title {
     animation: none;
     background: none;
     -webkit-text-fill-color: var(--accent);
     color: var(--accent);
+  }
+  @media (hover: hover) {
+    .featured:hover .featured-title {
+      animation: none;
+      background: none;
+      -webkit-text-fill-color: var(--accent);
+      color: var(--accent);
+    }
   }
   .featured-body { padding: 0.1rem 0.4rem 1.6rem; max-width: 41rem; }
   /* Speaker wall — captured from the summit's own speaker board */
@@ -266,14 +279,14 @@
     border: 1px solid var(--hairline);
     transition: border-color 0.2s ease;
   }
-  .fds-link:hover .fds-img { border-color: var(--accent); }
+  @media (hover: hover) { .fds-link:hover .fds-img { border-color: var(--accent); } }
   .featured-link {
     display: inline-block;
     margin-top: 1.3rem;
     font-size: 0.8125rem;
     color: var(--secondary);
   }
-  .featured-link:hover { color: var(--accent); }
+  @media (hover: hover) { .featured-link:hover { color: var(--accent); } }
 
   @media (max-width: 760px) {
     .grid { grid-template-columns: 1fr; gap: 2.4rem; }
