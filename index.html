@@ -103,20 +103,20 @@
      rotator is built — a short, tasteful entrance that also hides the swap from
      the static sentence. No-JS visitors (no .js flag) see it immediately. */
   .js .lede,
-  .js .register { opacity: 0; transform: translateY(6px); }
+  .js .register-head { opacity: 0; transform: translateY(6px); }
   .lede.is-ready,
-  .register.is-ready {
+  .register-head.is-ready {
     opacity: 1;
     transform: none;
     transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  /* Media mentions follow the lede by a beat for a gentle stagger */
-  .register.is-ready { transition-delay: 0.12s; }
+  /* The "Media mentions" heading follows the lede by a beat for a gentle stagger */
+  .register-head.is-ready { transition-delay: 0.12s; }
   @media (prefers-reduced-motion: reduce) {
     .js .lede,
-    .js .register { opacity: 1; transform: none; }
+    .js .register-head { opacity: 1; transform: none; }
     .lede.is-ready,
-    .register.is-ready { transition: none; }
+    .register-head.is-ready { transition: none; }
   }
   /* Rotating qualifier, inline after the lede — sequential crossfade through four phrases */
   .lede-cyc { display: inline-grid; vertical-align: baseline; }
@@ -431,8 +431,8 @@
     // JS-only opacity:0 never sticks. A frame at opacity 0 first lets it transition.
     requestAnimationFrame(function () {
       if (lede) lede.classList.add('is-ready');
-      var register = document.querySelector('.register');
-      if (register) register.classList.add('is-ready');
+      var registerHead = document.querySelector('.register-head');
+      if (registerHead) registerHead.classList.add('is-ready');
     });
   })();
 
