@@ -358,17 +358,10 @@
     </aside>
 
     <main>
-      <!-- The page's h1. Its accessible/crawlable text is one coherent sentence that
-           stays in the DOM even after JS animates the visible qualifier, so AI,
-           search, and screen readers always get the full lead. The visible span is
-           aria-hidden and is what JS turns into the rotating crossfade. -->
-      <h1 class="lede" id="lede">
-        <span class="sr-only">Russell Yang — AI for knowledge workers in judgment-rich domains like law, finance, and consulting.</span>
-        <span class="lede-visible" aria-hidden="true" data-cyc="in judgment-rich domains|in law|in finance|in consulting">AI for knowledge workers in judgment-rich domains like law, finance, and consulting.</span>
-      </h1>
-      <!-- Professional-first summary, present for AI/search/screen readers so a
-           summary of Russell leads with his work rather than his education. -->
-      <p class="sr-only">Russell Yang is an Applied Scientist at Microsoft, where he works on evaluation and experimentation for Copilot in Office. He led JudgmentBench in Stanford's liftlab — a collaboration with Harvey, Snorkel, and 50+ lawyers to define quality in legal AI — and serves on the American Statistical Association Committee on Scientific Freedom and Human Rights.</p>
+      <!-- The page's h1, and one coherent sentence in the raw HTML for crawlers/LLMs.
+           JS rebuilds it into the rotating crossfade and sets a matching aria-label,
+           so screen readers still get the full lead exactly once. -->
+      <h1 class="lede" id="lede" data-cyc="in judgment-rich domains|in law|in finance|in consulting">AI for knowledge workers in judgment-rich domains like law, finance, and consulting.</h1>
       <div class="bio">
         <p>Russell is an Applied Scientist at Microsoft embedded on a Product Management team, where he focuses on evaluations to improve Copilot in Office and partners on initiatives to help translate AI science into product.</p>
         <p>He has served on the Yale Advisory Committee on Investor Responsibility and, since 2023, on the American Statistical Association Committee on Scientific Freedom and Human Rights.</p>
@@ -425,22 +418,23 @@
   // don't run JS; here we rebuild the crossfading version for visitors.
   (function () {
     var lede = document.getElementById('lede');
-    var visible = lede && lede.querySelector('.lede-visible');
-    if (visible) {
-      var phrases = (visible.getAttribute('data-cyc') || '').split('|').filter(Boolean);
+    if (lede) {
+      var phrases = (lede.getAttribute('data-cyc') || '').split('|').filter(Boolean);
       if (phrases.length >= 2) {
         var cyc = document.createElement('span');
         cyc.className = 'lede-cyc';
-        // The visible span is aria-hidden, so the rotator is purely decorative;
-        // the hidden canonical sentence carries the meaning for AT and crawlers.
+        // The rotating phrases are decorative; the aria-label carries the full,
+        // stable lead so screen readers read it once, not as fragments.
+        cyc.setAttribute('aria-label', 'in judgment-rich domains like law, finance, and consulting');
         phrases.forEach(function (phrase) {
           var span = document.createElement('span');
           span.className = 'cyc';
+          span.setAttribute('aria-hidden', 'true');
           span.textContent = phrase;
           cyc.appendChild(span);
         });
-        visible.textContent = 'AI for knowledge workers ';
-        visible.appendChild(cyc);
+        lede.textContent = 'AI for knowledge workers ';
+        lede.appendChild(cyc);
       }
     }
     // Reveal the intro elements — whether or not we rebuilt the lede — so the
