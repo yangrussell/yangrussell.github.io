@@ -3,3 +3,5 @@ Disallow: /
 
 User-agent: ia_archiver
 Disallow: /
+
+Sitemap: https://russellyang.com/sitemap.xml
