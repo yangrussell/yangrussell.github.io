@@ -1,0 +1,56 @@
+# Russell Yang
+
+> Applied Scientist at Microsoft building AI for knowledge workers in judgment-rich domains like law, finance, and consulting.
+
+- [Homepage](https://russellyang.com/)
+- [Resume (PDF)](https://russellyang.com/resume_ry.pdf)
+- [LinkedIn](https://www.linkedin.com/in/russell-yang)
+- [Google Scholar](https://scholar.google.com/citations?user=-Qb7KsMAAAAJ&hl=en)
+
+## Resume
+
+Contact: russell.a.yang@gmail.com · linkedin.com/in/russell-yang · russellyang.com
+
+### Summary
+
+Building AI to empower knowledge workers in high-judgment domains like law, finance and consulting.
+
+### Experience
+
+**Microsoft** — Applied Scientist II, 2026–present
+- Designed AI evaluations and experimentation systems for Copilot in Office
+- Consulted on strategic initiatives for translation of AI science into product
+
+**Stanford Law School** — AI Engineering Fellow, 2025–2026
+- Led 10-person team from Stanford, Harvey, Snorkel AI with 50 lawyers to develop a judgment benchmark
+- Gave talks about quality in legal AI at Cambridge Business School and Snorkel AI Frontier Data Summit
+- Built a product prototype for spinout and drove demos to Biglaw partners and VC partners
+
+**Independent Consultant** — Contract Scientist & Science Writer, 2022–2023
+- Recent engagement: ~1000 billed hours over 1.5 years to a test prep firm developing mock MCATs
+
+- Citadel, Trading Intern, 2024
+- KKR, Summer Analyst, 2023
+- Johnson & Johnson, Robotics Data Science Co-op, 2022
+- Stanford University School of Medicine, Research Intern then Data Analyst, 2019–2020
+
+### Education
+
+**Yale University** — BS in Electrical Engineering and Computer Science, Molecular Biophysics and Biochemistry
+- Tau Beta Pi Engineering Honor Society (President), Yale Undergrad Orgs Funding Committee (Director), Yale Real Estate Group (Senior Advisor), Sigma Chi Fraternity (Philanthropy Chairman)
+
+### Service
+
+**Yale Advisory Committee on Investor Responsibility**, 2022–2024
+- Served 2-year term on 8-person body making stock voting recommendations for Yale endowment
+
+**American Statistical Association Committee on Scientific Freedom and Human Rights**, 2023–present
+- Led investigation of statistics and data science book bans, drafting statement approved by Board
+
+**Yale Undergraduate Organizations Funding Committee**, 2022–2023
+- Hired and led 16 student employees to distribute $400,000 to Yale student clubs as Director
+
+### Research
+
+- Russell Yang, Ruishi Chen, Pierce Kelaita, Riya Ranjan, Sibo Ma, Charles Dickens, Matthew Guillod, Megan Ma, Julian Nyarko. JudgmentBench: Comparing Rubric and Preference Evaluation for Quality Assessment. Advances in Neural Information Processing Systems (NeurIPS) (forthcoming).
+- Russell Yang. Privacy and Surveillance Concerns in Machine Learning Fall Prediction Models: Implications for Geriatric Care and the Internet of Medical Things. AI & Society (2023).
