@@ -23,7 +23,7 @@ Building AI to empower knowledge workers in high-judgment domains like law, fina
 - Served as lead scientist on a project for VP of Eng with legal/accessibility considerations & trained 4 testers
 
 **Stanford Law School** — AI Engineering Fellow, 2025–2026
-- Led 10-person team from Stanford, Harvey, Snorkel AI with 50 lawyers to develop a judgment benchmark
+- Led 9-person team from Stanford, Harvey, Snorkel AI with 50 lawyers to develop a judgment benchmark
 - Gave talks about quality in legal AI at Cambridge Business School and Snorkel AI Frontier Data Summit
 - Built a product prototype for spinout and drove demos to Biglaw partners and VC partners
 
