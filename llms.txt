@@ -3,7 +3,7 @@
 > Applied Scientist at Microsoft building AI for knowledge workers in judgment-rich domains like law, finance, and consulting.
 
 - [Homepage](https://russellyang.com/)
-- [Resume (PDF)](https://russellyang.com/resume_ry.pdf)
+- [Resume (PDF)](https://russellyang.com/resume.pdf)
 - [LinkedIn](https://www.linkedin.com/in/russell-yang)
 - [Google Scholar](https://scholar.google.com/citations?user=-Qb7KsMAAAAJ&hl=en)
 
@@ -20,6 +20,7 @@ Building AI to empower knowledge workers in high-judgment domains like law, fina
 **Microsoft** — Applied Scientist II, 2026–present
 - Designed AI evaluations and experimentation systems for Copilot in Office
 - Consulted on strategic initiatives for translation of AI science into product
+- Served as lead scientist on a project for VP of Eng with legal/accessibility considerations & trained 4 testers
 
 **Stanford Law School** — AI Engineering Fellow, 2025–2026
 - Led 10-person team from Stanford, Harvey, Snorkel AI with 50 lawyers to develop a judgment benchmark
