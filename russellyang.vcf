@@ -4,6 +4,7 @@ N:Yang;Russell;;;
 FN:Russell Yang
 EMAIL;TYPE=INTERNET,HOME:russell.a.yang@gmail.com
 TEL;TYPE=CELL:+1-650-889-9922
-X-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/in/russell-yang
+item1.URL:https://www.linkedin.com/in/russell-yang
+item1.X-ABLabel:LinkedIn
 REV:2026-11-16T00:00:00Z
 END:VCARD
