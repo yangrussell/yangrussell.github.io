@@ -13,14 +13,14 @@ Contact: russell.a.yang@gmail.com · linkedin.com/in/russell-yang · russellyang
 
 ### Summary
 
-Building AI to empower knowledge workers in high-judgment domains like law, finance and consulting.
+Building AI to empower knowledge workers in judgment-rich domains like law, finance and consulting.
 
 ### Experience
 
 **Microsoft** — Applied Scientist II, 2026–present
-- Designed AI evaluations and experimentation systems for Copilot in Office
+- Served as lead scientist on project for VP of Eng with legal/accessibility considerations, supervised 4 testers
+- Designed an end-to-end quality evaluation to improve Copilot in Word
 - Consulted on strategic initiatives for translation of AI science into product
-- Served as lead scientist on a project for VP of Eng with legal/accessibility considerations & trained 4 testers
 
 **Stanford Law School** — AI Engineering Fellow, 2025–2026
 - Led 9-person team from Stanford, Harvey, Snorkel AI with 50 lawyers to develop a judgment benchmark
